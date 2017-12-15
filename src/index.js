@@ -2,7 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import {unregister} from './registerServiceWorker';
+import { Provider } from "react-redux";
+import store from './store';
+import {Hashrouter} from 'router';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+
+ReactDOM.render(
+    <Provider store={store}>
+        <Hashrouter>
+        <App />
+        </Hashrouter>
+    </Provider>
+, document.getElementById('root'));
+unregister();
