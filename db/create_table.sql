@@ -1,4 +1,6 @@
-create table users(
+-- create table 67C
+
+    create table users(
     id serial primary key,
     username varchar(40),
     email varchar(40),

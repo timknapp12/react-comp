@@ -8,8 +8,11 @@ const express = require("express"),
   Auth0Strategy = require("passport-auth0"),
   massive = require("massive");
 
+//   72C node files 
+//   74C invoke express
 const app = express();
 
+// body parser 76F
 app.use(bodyParser.json());
 app.use(cors());
 app.use(
@@ -23,6 +26,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// massive connection 70C
 massive(process.env.CONNECTION_STRING).then(db => {
   app.set("db", db);
 });
@@ -38,6 +42,8 @@ passport.use(
     function(accessToken, refreshToken, extraParams, profile, done) {
       const db = app.get("db");
       const userData = profile._json;
+
+    //   query function 70K
       db.find_user([userData.identities[0].user_id]).then(user => {
         if (user[0]) {
           return done(null, user[0].id);

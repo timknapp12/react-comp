@@ -1,3 +1,4 @@
+-- 66G insert statement
 
 insert into users 
 (username, email, first_name, auth_id)
