@@ -6,7 +6,8 @@ const express = require("express"),
   session = require("express-session"),
   passport = require("passport"),
   Auth0Strategy = require("passport-auth0"),
-  massive = require("massive");
+  massive = require("massive"),
+  ctrl = require('./ctrl');
 
 //   72C node files 
 //   74C invoke express
@@ -43,7 +44,7 @@ passport.use(
       const db = app.get("db");
       const userData = profile._json;
 
-    //   query function 70K
+      query function 70K
       db.find_user([userData.identities[0].user_id]).then(user => {
         if (user[0]) {
           return done(null, user[0].id);
@@ -93,5 +94,14 @@ app.get('/logout', (req, res) => {
     req.logOut();
     res.redirect('http://localhost:3000/');
 })
+
+//ENPOINTS
+app.get('/api/products', ctrl.read);
+
+app.post('/api/products', ctrl.create);
+
+app.delete('/api/products/:id', ctrl.delete);
+
+app.put('/api/products/:id', ctrl.update);
 
 app.listen(port, () => console.log(`listening on port ${port}`));

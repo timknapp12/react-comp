@@ -5,14 +5,14 @@ import App from './App';
 import {unregister} from './registerServiceWorker';
 import { Provider } from "react-redux";
 import store from './store';
-import {Hashrouter} from 'router';
+import { HashRouter } from 'react-router-dom';
 
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Hashrouter>
-        <App />
-        </Hashrouter>
-    </Provider>
+    <HashRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+    </HashRouter>
 , document.getElementById('root'));
 unregister();
