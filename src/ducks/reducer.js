@@ -11,8 +11,13 @@ const ADD_PRODUCT = 'ADD_PRODUCT';
 const DELETE_PRODUCT = 'DELETE_PRODUCT';
 const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 
+
+// reducer function 43D
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+
+        // redux promise middleware  43K
+        // actions 43E
         case GET_USER_INFO + '_FULFILLED':
             return Object.assign({}, state, {user: action.payload})
 
@@ -32,7 +37,7 @@ export default function reducer(state = initialState, action) {
     }
 }
 
-// ACTION CREATORS
+// ACTION CREATORS   43 F
 
 // export function getUserInfo() {
 //     const user = axios.get('/auth/me').then(res => res.data)

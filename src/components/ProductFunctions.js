@@ -43,9 +43,11 @@ class ProductFunctions extends Component {
   }
 }
 
+// mapStateToProps 43G
 function mapStateToProps(state){
     return state
 }
 
-
+// connect redux 43C
+//share state 43G
 export default connect(mapStateToProps, { addProduct, deleteProduct, updateProduct, getAllProducts })(ProductFunctions);
