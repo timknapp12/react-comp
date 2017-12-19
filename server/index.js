@@ -44,7 +44,7 @@ passport.use(
       const db = app.get("db");
       const userData = profile._json;
 
-      query function 70K
+    //   query function 70K
       db.find_user([userData.identities[0].user_id]).then(user => {
         if (user[0]) {
           return done(null, user[0].id);
@@ -103,5 +103,14 @@ app.post('/api/products', ctrl.create);
 app.delete('/api/products/:id', ctrl.delete);
 
 app.put('/api/products/:id', ctrl.update);
+
+app.get('/api/products/', (req, res) => {
+    const db = app.get('db');
+
+    db.get_product_by_name([req.query.product_name])
+    .then(product => {
+        res.status(200).send(product);
+    })
+})
 
 app.listen(port, () => console.log(`listening on port ${port}`));

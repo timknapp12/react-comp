@@ -2,28 +2,28 @@ module.exports = {
     read: (req, res, next) => {
         const db = req.app.get('db');
 
-        db.get_all_products().then(res => res.status(200).send(res));
+        db.get_all_products().then(response => res.status(200).send(response));
     },
 
     create: (req, res, next) => {
         const db = req.app.get('db');
 
         db.add_product([product_name, product_price])
-        .then(res => res.status(200).send(res));
+        .then(response => res.status(200).send(response));
     },
 
     delete: (req, res, next) => {
         const db = req.app.get('db');
 
         db.remove_product([req.params.id])
-        .then(res => res.status(200).send(res))
+        .then(response => res.status(200).send(response))
     },
 
     update: (req, res, next) => {
         const db = req.app.get('db');
 
-        db.update_product([req.body.product_name, req.body.product_price, req.params.id])
-        .then(res => res.status(200).send(res))
+        db.update_product([req.body.product_name, req.body.product_price, req.query.color])
+        .then(response => res.status(200).send(response))
     }
 }
 
